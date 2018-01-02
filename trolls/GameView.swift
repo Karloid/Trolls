@@ -13,14 +13,19 @@ class GameView: UIView {
 
     private var textFontAttributes: [String: Any]? = nil
 
-    private var worldWidth: NSInteger = 0
-    private var worldHeight: NSInteger = 0
-
     private var actualArea: CGRect = CGRect()
+
+    private var game: Game? = nil
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        myInit();
+    }
+
+    init(frame: CGRect, game: Game) {
+        super.init(frame: frame)
+        self.game = game;
         myInit();
     }
 
@@ -34,12 +39,12 @@ class GameView: UIView {
         let size: CGSize = "#".size(attributes: textFontAttributes)
         actualArea = frame.offsetBy(dx: 3, dy: 12).insetBy(dx: 16, dy: 16)
 
-        worldWidth = (NSInteger)(actualArea.width / size.width);
-        worldHeight = (NSInteger)(actualArea.height / size.height);
+        let worldWidth = (NSInteger)(actualArea.width / size.width) - 2;
+        let worldHeight = (NSInteger)(actualArea.height / size.height);
 
         backgroundColor = UIColor.white
 
-
+        game!.myInit(worldWidth, worldHeight)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -52,18 +57,31 @@ class GameView: UIView {
         var str = ""
 
 
-        var row: NSInteger = 0
-        while (row < worldHeight) {
-            var col: NSInteger = 0
-            while (col < worldWidth) {
-                str = str + "#"
-                col = col + 1
+        var map = game!.getMap()
+
+        let worldWidth = map.count
+        let worldHeight = map[0].count
+        var y: Int = 0
+        while (y < worldHeight) {
+            var x: Int = 0
+            while (x < worldWidth) {
+
+                var s = "#"
+                if (map[x][y] == Game.MAP_FREE) {
+                    s = " ";
+                }
+
+                str = str + s
+                x = x + 1
             }
-            row = row + 1
+            y = y + 1
+            if (y < worldHeight) {
+                str = str + "\n"
+            }
         }
 
 
-        str.draw(in: actualArea, withAttributes: textFontAttributes)
+        str.draw(at: actualArea.origin, withAttributes: textFontAttributes)
     }
 
 
