@@ -13,9 +13,13 @@ class GameView: UIView {
 
     private var textFontAttributes: [String: Any]? = nil
 
+    private var worldWidth: NSInteger = 0
+    private var worldHeight: NSInteger = 0
+
+    private var actualArea: CGRect = CGRect()
+
     override init(frame: CGRect) {
-        let f = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: frame.size.height - 200);
-        super.init(frame: f)
+        super.init(frame: frame)
 
         myInit();
     }
@@ -27,6 +31,11 @@ class GameView: UIView {
             NSForegroundColorAttributeName: UIColor.black,
         ]
 
+        let size: CGSize = "#".size(attributes: textFontAttributes)
+        actualArea = frame.offsetBy(dx: 3, dy: 12).insetBy(dx: 16, dy: 16)
+
+        worldWidth = (NSInteger)(actualArea.width / size.width);
+        worldHeight = (NSInteger)(actualArea.height / size.height);
 
         backgroundColor = UIColor.white
 
@@ -39,22 +48,22 @@ class GameView: UIView {
     }
 
     override func draw(_ rect: CGRect) {
-        /* let h = rect.height
-         let w = rect.width
-         let color: UIColor = UIColor.yellow
 
-         let drect = CGRect(x: (w * 0.25), y: (h * 0.25), width: (w * 0.5), height: (h * 0.5))
-         let bpath: UIBezierPath = UIBezierPath(rect: drect)
-
-         color.set()
-         bpath.stroke()
- */
+        var str = ""
 
 
-        "Hello World again Hello World again ".draw(in: rect.insetBy(dx: 16, dy: 16), withAttributes: textFontAttributes)
+        var row: NSInteger = 0
+        while (row < worldHeight) {
+            var col: NSInteger = 0
+            while (col < worldWidth) {
+                str = str + "#"
+                col = col + 1
+            }
+            row = row + 1
+        }
 
 
-        NSLog("drawRect has updated the view")
+        str.draw(in: actualArea, withAttributes: textFontAttributes)
     }
 
 
