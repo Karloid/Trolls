@@ -14,7 +14,7 @@ class Game {
 
     private var height = 0
     private var map: [[Int]] = []
-    private var map: [[Int]] = []
+    private var units: [MyUnit] = []
 
     func myInit(_ width: Int, _ height: Int) {
         self.width = width;
@@ -42,5 +42,21 @@ class Game {
 
     func getMap() -> [[Int]] {
         return map
+    }
+
+    func clickOn(_ x: Int, _ y: Int) {
+        NSLog("Click on %d %d", x, y)
+        if (x < 0 || x >= map.count || y < 0 || y >= map[0].count) {
+            NSLog("Ignored")
+            return
+        }
+
+        units = units.filter {!($0 is ClickPlace)}
+        
+        units.append(ClickPlace(x, y))
+    }
+
+    func getUnits() -> [MyUnit] {
+        return units
     }
 }

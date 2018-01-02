@@ -17,6 +17,8 @@ class GameView: UIView {
 
     private var game: Game? = nil
 
+    private var cellSize: CGSize = CGSize()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -36,11 +38,11 @@ class GameView: UIView {
             NSForegroundColorAttributeName: UIColor.black,
         ]
 
-        let size: CGSize = "#".size(attributes: textFontAttributes)
+        cellSize = "#".size(attributes: textFontAttributes)
         actualArea = frame.offsetBy(dx: 3, dy: 12).insetBy(dx: 16, dy: 16)
 
-        let worldWidth = (NSInteger)(actualArea.width / size.width) - 2;
-        let worldHeight = (NSInteger)(actualArea.height / size.height);
+        let worldWidth = (NSInteger)(actualArea.width / cellSize.width) - 2;
+        let worldHeight = (NSInteger)(actualArea.height / cellSize.height);
 
         backgroundColor = UIColor.white
 
@@ -59,6 +61,8 @@ class GameView: UIView {
 
         var map = game!.getMap()
 
+        var units = game!.getUnits();
+
         let worldWidth = map.count
         let worldHeight = map[0].count
         var y: Int = 0
@@ -66,9 +70,23 @@ class GameView: UIView {
             var x: Int = 0
             while (x < worldWidth) {
 
+                var uToDraw: MyUnit? = nil
+                var i = 0
+                for u in units {
+                    if (u.x == x && u.y == y) {
+                        uToDraw = u
+                        units.remove(at: i)
+                        break
+                    }
+                    i += 1
+                }
                 var s = "#"
-                if (map[x][y] == Game.MAP_FREE) {
-                    s = " ";
+                if (uToDraw != nil) {
+                    s = uToDraw!.getSymbol()
+                } else {
+                    if (map[x][y] == Game.MAP_FREE) {
+                        s = " ";
+                    }
                 }
 
                 str = str + s
@@ -80,10 +98,24 @@ class GameView: UIView {
             }
         }
 
-
         str.draw(at: actualArea.origin, withAttributes: textFontAttributes)
     }
 
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+        for item in touches {
+            //game.clickOn(event)
+            var loc = item.location(in: self)
+
+            if (actualArea.contains(loc)) {
+                loc = CGPoint(x: loc.x - actualArea.origin.x, y: loc.y - actualArea.origin.y)
+
+                game!.clickOn((Int)(loc.x / cellSize.width), (Int)(loc.y / cellSize.height))
+                setNeedsDisplay()
+            }
+            return
+        }
+    }
 
     override func setNeedsDisplay() {
         super.setNeedsDisplay(frame)
