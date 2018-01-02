@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18CCF0B16EC9912E8B96C74B /* GameEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCF8C3ED9795D6094011FB /* GameEnd.swift */; };
 		18CCF2079A069B91BF298DD3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCF519D7E9C0C774099399 /* Game.swift */; };
 		18CCF276FAB08ADB08A257ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18CCF022849EEDA482D1C110 /* Assets.xcassets */; };
 		18CCF6B48A7B3308D70010B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCFC69B55B3F78FB2F66D2 /* AppDelegate.swift */; };
+		18CCF6EB1A9C8FA92C4694E7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCF6E0C2FEBA2B1A42B8CA /* Player.swift */; };
 		18CCF809F6D9C8532F0FE859 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCFBBCB1B16CA6522BFC09 /* ViewController.swift */; };
 		18CCFA7725600FC35A06763E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18CCF77AEAB4CA3900E1B53A /* LaunchScreen.storyboard */; };
 		18CCFCE2EBEE62C580011423 /* ClickPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCF7B4C0044C1ACCE005C8 /* ClickPlace.swift */; };
 		18CCFDF7B0A8AD517D64879A /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCF8CBA97D1638EB54E390 /* GameView.swift */; };
 		18CCFF652C79FF616A85F11E /* MyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCF663A6B8365EE16BD715 /* MyUnit.swift */; };
+		18CCFF71B4EB977577F05C44 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCF81F27608D2D441EB45C /* Direction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,7 +25,10 @@
 		18CCF519D7E9C0C774099399 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		18CCF659610B0F8D2DF514FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18CCF663A6B8365EE16BD715 /* MyUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUnit.swift; sourceTree = "<group>"; };
+		18CCF6E0C2FEBA2B1A42B8CA /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		18CCF7B4C0044C1ACCE005C8 /* ClickPlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClickPlace.swift; sourceTree = "<group>"; };
+		18CCF81F27608D2D441EB45C /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		18CCF8C3ED9795D6094011FB /* GameEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEnd.swift; sourceTree = "<group>"; };
 		18CCF8CBA97D1638EB54E390 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		18CCF8F75673C84BB7F791BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		18CCFB6B6198743630886E54 /* trolls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = trolls.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +59,9 @@
 				18CCF519D7E9C0C774099399 /* Game.swift */,
 				18CCF663A6B8365EE16BD715 /* MyUnit.swift */,
 				18CCF7B4C0044C1ACCE005C8 /* ClickPlace.swift */,
+				18CCF6E0C2FEBA2B1A42B8CA /* Player.swift */,
+				18CCF81F27608D2D441EB45C /* Direction.swift */,
+				18CCF8C3ED9795D6094011FB /* GameEnd.swift */,
 			);
 			path = trolls;
 			sourceTree = "<group>";
@@ -146,6 +155,9 @@
 				18CCF2079A069B91BF298DD3 /* Game.swift in Sources */,
 				18CCFF652C79FF616A85F11E /* MyUnit.swift in Sources */,
 				18CCFCE2EBEE62C580011423 /* ClickPlace.swift in Sources */,
+				18CCF6EB1A9C8FA92C4694E7 /* Player.swift in Sources */,
+				18CCFF71B4EB977577F05C44 /* Direction.swift in Sources */,
+				18CCF0B16EC9912E8B96C74B /* GameEnd.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

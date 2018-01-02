@@ -16,6 +16,9 @@ class Game {
     private var map: [[Int]] = []
     private var units: [MyUnit] = []
 
+    private var player = Player(0, 0)
+    private var gameEnd = GameEnd(0, 0)
+
     func myInit(_ width: Int, _ height: Int) {
         self.width = width;
         self.height = height;
@@ -38,6 +41,24 @@ class Game {
                 }
             }
         }
+
+        let r = Int(arc4random_uniform(4))
+        if (r == 0) {
+            player.x = 1;
+            player.y = 1;
+        } else if (r == 1) {
+            player.x = width - 2;
+            player.y = 1;
+        } else if (r == 2) {
+            player.x = width - 2;
+            player.y = height - 2;
+        } else if (r == 3) {
+            player.x = 1;
+            player.y = height - 2;
+        }
+
+        units.append(player)
+        units.append(gameEnd)
     }
 
     func getMap() -> [[Int]] {
